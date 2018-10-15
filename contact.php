@@ -12,9 +12,9 @@ $comment = ($_GET['comment']) ?$_GET['comment'] : $_POST['comment'];
 if ($_POST) $post=1;
 
 //Simple server side validation for POST data, of course, you should validate the email
-if (!$name) $errors[count($errors)] = 'Please enter your name.';
-if (!$email) $errors[count($errors)] = 'Please enter your email.'; 
-if (!$comment) $errors[count($errors)] = 'Please enter your message.'; 
+if (!$name) $errors[count($errors)] = 'Please enter your Name.';
+if (!$email) $errors[count($errors)] = 'Please enter your E-Mail.'; 
+if (!$comment) $errors[count($errors)] = 'Please enter your Message.'; 
 
 //if the errors array is empty, send the mail
 if (!$errors) {
@@ -35,13 +35,18 @@ if (!$errors) {
 	
 	//if POST was used, display the message straight away
 	if ($_POST) {
-		if ($result) echo 'Thank you! We have received your message.';
-		else echo 'Sorry, unexpected error. Please try again later';
+		if ($result){
+			echo 'Thank you! We have received your message.';
+		}
+		else{
+			echo 'Sorry, unexpected error occured. Please try again later';
+		}
 		
 	//else if GET was used, return the boolean value so that 
 	//ajax script can react accordingly
 	//1 means success, 0 means failed
-	} else {
+	} 
+	else {
 		echo $result;	
 	}
 
